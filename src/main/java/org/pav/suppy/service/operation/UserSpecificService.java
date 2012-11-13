@@ -5,9 +5,6 @@ import org.pav.suppy.entity.operation.UserSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-/**
- * Service for initializing MongoDB with sample data using {@link MongoTemplate}
- */
 public class UserSpecificService {
 	
 	@Autowired
