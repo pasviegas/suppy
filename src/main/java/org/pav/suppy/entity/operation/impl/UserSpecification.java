@@ -1,4 +1,4 @@
-package org.pav.suppy.entity.operation;
+package org.pav.suppy.entity.operation.impl;
 
 import java.math.BigDecimal;
 import java.util.Date;

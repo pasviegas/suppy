@@ -4,7 +4,7 @@
  */
 package org.pav.suppy.service.basic;
 
-public interface IDemoService {
+public interface UserService {
    
 
 }
