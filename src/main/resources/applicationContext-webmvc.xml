@@ -23,7 +23,5 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" p:order="3">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 	</bean>
-    
-	<bean id="jsonView" class="org.pav.suppy.web.utils.MappingJacksonJsonGZIPView" p:disableCaching="false" p:gzipEnabled="true"/>
 	
 </beans>
