@@ -1,16 +1,75 @@
-create schema SA;
-create table GridEntity (
-    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    descricao varchar(200) not null,
-    valor numeric(10,2) not null,
-    CONSTRAINT GridEntity_key PRIMARY KEY (id)
+-- Table: currency
+
+-- DROP TABLE currency;
+
+CREATE TABLE currency
+(
+  currencyid integer NOT NULL,
+  name text,
+  CONSTRAINT currency_pk PRIMARY KEY (currencyid)
+)
+WITH (
+  OIDS=FALSE
 );
-create table SingleRowEntity (
-    id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
-    texto1 varchar(200),
-    combo1 varchar(200),
-    autocomplete integer,
-    dateDate date,
-    dateTime date,
-    CONSTRAINT SingleRowEntity_key PRIMARY KEY (id)
+ALTER TABLE currency
+  OWNER TO postgres;
+  
+-- Table: stockkeepingunit
+
+-- DROP TABLE stockkeepingunit;
+
+CREATE TABLE stockkeepingunit
+(
+  stockkeepingunitid integer NOT NULL,
+  name text,
+  CONSTRAINT stockkeepingunit_pk PRIMARY KEY (stockkeepingunitid)
+)
+WITH (
+  OIDS=FALSE
 );
+ALTER TABLE stockkeepingunit
+  OWNER TO postgres;
+
+-- Table: country
+
+-- DROP TABLE country;
+
+CREATE TABLE country
+(
+  countryid integer NOT NULL,
+  name text,
+  currencyid integer,
+  CONSTRAINT country_pk PRIMARY KEY (countryid),
+  CONSTRAINT country_currency_fk FOREIGN KEY (currencyid)
+      REFERENCES currency (currencyid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT country_name_uk UNIQUE (name)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE country
+  OWNER TO postgres;
+
+-- Table: "user"
+
+-- DROP TABLE "user";
+
+CREATE TABLE "user"
+(
+  userid integer NOT NULL,
+  name text,
+  email text,
+  password text,
+  countryid integer,
+  CONSTRAINT user_pk PRIMARY KEY (userid),
+  CONSTRAINT user_country_fk FOREIGN KEY (countryid)
+      REFERENCES country (countryid) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT user_email_uk UNIQUE (email)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "user"
+  OWNER TO postgres;

@@ -16,9 +16,13 @@
 	<context:component-scan base-package="org.pav.suppy.repository" />
 	<context:component-scan base-package="org.pav.suppy..service" />
     <context:component-scan base-package="org.pav.suppy.web.controller" />
+	
+	<context:property-placeholder properties-ref="deployProperties" />
 
 	<import resource="classpath:applicationContext-jdbc.xml"/>
     <import resource="classpath:applicationContext-webmvc.xml"/>
+    <import resource="classpath:applicationContext-mongo.xml"/>
 	
-
+	<bean id="deployProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean" p:location="/WEB-INF/deploy.properties" />
+	
 </beans>
