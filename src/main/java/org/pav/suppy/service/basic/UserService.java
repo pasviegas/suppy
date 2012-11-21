@@ -6,5 +6,6 @@ package org.pav.suppy.service.basic;
 
 public interface UserService {
    
+	void store();
 
 }
