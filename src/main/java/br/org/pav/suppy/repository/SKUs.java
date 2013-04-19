@@ -1,13 +1,13 @@
 package br.org.pav.suppy.repository;
 
-import java.util.List;
-
 import br.org.pav.suppy.model.SKU;
+
+import java.util.List;
 
 public interface SKUs {
 
-	List<SKU> findAll();
+    List<SKU> findAll();
 
-	SKU findOne(String id);
+    SKU findOne(String id);
 
 }
