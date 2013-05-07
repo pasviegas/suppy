@@ -1,6 +1,7 @@
 package br.org.pav.suppy;
 
 import br.org.pav.suppy.configuration.*;
+import br.org.pav.suppy.configuration.ControllerConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -18,7 +19,8 @@ public class WebApplicationInitializer extends AbstractAnnotationConfigDispatche
                 PropertySourceConfig.class,
                 MongoConfig.class,
                 RepositoryConfig.class,
-                ServiceConfig.class
+                ServiceConfig.class,
+                MetricsConfig.class
         };
     }
 

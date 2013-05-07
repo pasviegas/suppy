@@ -2,6 +2,8 @@ package br.org.pav.suppy.web.controller;
 
 import br.org.pav.suppy.model.Stock;
 import br.org.pav.suppy.repository.Stocks;
+import com.codahale.metrics.annotation.Metered;
+import com.codahale.metrics.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -20,12 +22,15 @@ public class StockController {
     @Autowired
     private Stocks stocks;
 
+    @Timed
+    @Metered
     @ResponseBody
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Stock findOne(@PathVariable("id") String id) {
         return stocks.findOne(id);
     }
 
+    @Timed
     @ResponseBody
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Stock> store(@RequestBody Stock stock) {
